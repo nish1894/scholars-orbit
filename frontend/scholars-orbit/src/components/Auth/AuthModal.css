@@ -1,0 +1,29 @@
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: var(--z-modal);
+    animation: slideInFromRight var(--transition-normal);
+}
+
+.auth-modal-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Ensure the cards inside maintain their styling */
+.auth-modal-container .card {
+    margin: 0;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}

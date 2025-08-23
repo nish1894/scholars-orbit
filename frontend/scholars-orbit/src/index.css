@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import './styles/base.css';
+@import './styles/utilities.css';
+@import './styles/layout.css';
+
+@layer reset, base, components, utilities, overrides;
+
+@layer reset {
+  /* Reset styles are handled in base.css */
+}
+
+@layer base {
+  html {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    background: #fdfeff;
+    overflow-x: hidden;
+    color: #111;
+  }
+
+  a {
+    color: #2563eb;
+  }
+}
+
+@layer components {
+  .form-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: #f9fafb;
+    padding: 1rem;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .form-label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .input-box {
+    padding: 0.75rem 1rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .input-box:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .button-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .button-primary:hover {
+    background: #1d4ed8;
+  }
+}
+
+/* @layer utilities {
+  .text-center { text-align:center; }
+  .mt-4 { margin-top:1rem; }
+} */
+
+/* Highest priority bucket for quick page-specific tweaks */
+/* @layer overrides {
+  .btn.primary { background:#111; color:white; }
+} */

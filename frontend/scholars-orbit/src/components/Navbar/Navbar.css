@@ -1,0 +1,347 @@
+/* ==========================================================================
+   NAVBAR COMPONENT STYLES
+   ========================================================================== */
+
+/* Component-specific design tokens */
+:root {
+  --blue-600: #0b5ed7;
+  --blue-700: #0a58ca;
+  --brand-blue: #0b5ed7;
+  --danger: #e43b56;
+  --text: #111827;
+  --muted: #6b7280;
+  --radius: 10px;
+  --shadow: 0 2px 10px rgba(17, 24, 39, 0.06);
+}
+
+/* ==========================================================================
+   LAYOUT STRUCTURE
+   ========================================================================== */
+
+/* Main navbar wrapper - sticky positioning */
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* Top promotional bar with gradient background */
+.nav-topbar {
+  height: 36px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* Main navigation container */
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  /* Logo | Links | Actions */
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   BRANDING
+   ========================================================================== */
+
+/* Brand logo container */
+.brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+/* Primary brand text */
+.brand-primary {
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--brand-blue);
+  font-size: var(--text-2xl);
+}
+
+/* Secondary brand text */
+.brand-sub {
+  margin-top: 2px;
+  letter-spacing: 6px;
+  color: #1f2937;
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   NAVIGATION LINKS
+   ========================================================================== */
+
+/* Center navigation links container */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual navigation link */
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: var(--text-base);
+}
+
+/* Navigation link hover state */
+.nav-links a:hover {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   ACTION BUTTONS
+   ========================================================================== */
+
+/* Right-side actions container */
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+/* Base navigation button styles - extends utilities .btn */
+.btn--nav {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Login button specific styles */
+.login-btn {
+  border: 2px solid var(--brand-blue);
+  color: var(--brand-blue);
+  background: #fff;
+}
+
+.login-btn:hover {
+  background: #eff6ff;
+}
+
+/* Primary action button (Sign Up) */
+.btn--nav-primary {
+  background: var(--danger);
+  color: #fff;
+  border: 2px solid var(--danger);
+}
+
+.btn--nav-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Call-to-action button */
+.call-btn {
+  border: 2px solid red;
+  color: white;
+  background: red;
+  transition: all var(--transition-fast);
+  font-weight: 700;
+  /* Make it bolder than other buttons */
+  position: relative;
+  overflow: hidden;
+}
+
+.call-btn:hover {
+  background: #c53030;
+  /* Darker red on hover */
+  border-color: #c53030;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.call-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Add a subtle pulse animation for attention */
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+}
+
+.call-btn {
+  animation: pulse 2s infinite;
+}
+
+.call-btn:hover {
+  animation: none;
+  /* Stop pulse on hover */
+}
+
+/* ==========================================================================
+   DECORATIVE ELEMENTS
+   ========================================================================== */
+
+/* Bottom accent strip */
+.nav-bottombar {
+  height: 10px;
+  background: #0a3a8a;
+}
+
+/* ==========================================================================
+   MOBILE HAMBURGER MENU
+   ========================================================================== */
+
+/* Mobile hamburger button */
+.hamburger {
+  display: none;
+  /* Hidden on desktop */
+  width: 42px;
+  height: 38px;
+  border: 1px solid #cfd3dc;
+  border-radius: var(--radius-md);
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Hamburger line elements */
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Tablet and small desktop breakpoint */
+@media (max-width: 960px) {
+
+  /* Adjust grid layout for mobile - keep buttons visible */
+  .nav {
+    grid-template-columns: auto 1fr auto;
+    /* Logo | Links | Actions */
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Mobile navigation links - absolute positioned */
+  .nav-links {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    /* Increased from 64px to create more space below navbar */
+    /* Below the main navigation row */
+    background: #fff;
+    padding: var(--space-3) var(--space-5);
+    flex-direction: column;
+    gap: var(--space-4);
+    border-top: 1px solid #eef2f7;
+    display: none;
+    /* Hidden by default */
+    z-index: 100;
+    /* Ensure it's above other content */
+  }
+
+  /* Keep actions visible on mobile - don't hide them */
+  .actions {
+    display: flex;
+    /* Always visible */
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  /* Show navigation when mobile menu is open */
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Remove the old mobile actions positioning since we want them always visible */
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 520px) {
+
+  /* On very small screens, stack buttons vertically but keep them visible */
+  .actions {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Adjust button sizes for small screens */
+  .btn--nav,
+  .call-btn {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    min-width: 80px;
+    /* Ensure consistent button width */
+  }
+}
+
+/* Extra small mobile breakpoint */
+@media (max-width: 400px) {
+
+  /* On very small screens, make buttons more compact */
+  .nav {
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .actions {
+    gap: var(--space-1);
+  }
+
+  .btn--nav,
+  .call-btn {
+    padding: var(--space-1) var(--space-2);
+    font-size: 11px;
+    min-width: 70px;
+  }
+
+  /* Adjust brand size for very small screens */
+  .brand-primary {
+    font-size: var(--text-lg);
+  }
+
+  .brand-sub {
+    font-size: 9px;
+  }
+}
+
+/* ==========================================================================
+   UTILITY OVERRIDES
+   ========================================================================== */
+
+/* Ensure button cursor states are consistent */
+.btn,
+.btn-outline,
+.btn:hover,
+.btn-outline:hover {
+  cursor: pointer;
+}

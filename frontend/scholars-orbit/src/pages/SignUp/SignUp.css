@@ -1,0 +1,21 @@
+.signup-text {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+}
+
+.signup-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+.field-error {
+  color: var(--color-danger);
+  font-size: smaller;
+  margin-left: 2px;
+}
