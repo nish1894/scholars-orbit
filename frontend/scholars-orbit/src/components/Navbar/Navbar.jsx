@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar({ onLoginClick, onSignupClick }) {
@@ -15,10 +16,10 @@ export default function Navbar({ onLoginClick, onSignupClick }) {
       </div>{' '}
       <nav className="nav">
         {/* Brand */}
-        <a href="/" className="brand" aria-label="Home">
+        <Link to="/" className="brand" aria-label="Home">
           <span className="brand-primary">Scholar's</span>
           <span className="brand-sub">Orbit</span>
-        </a>
+        </Link>
 
         {/* Hamburger (mobile) */}
         <button
@@ -34,13 +35,30 @@ export default function Navbar({ onLoginClick, onSignupClick }) {
 
         {/* Center links */}
         <ul className={`nav-links ${open ? 'open' : ''}`}>
-          {['Curriculum', 'Reviews', 'Teaching', 'Mentorship', 'Community', 'Careers', 'FAQs'].map(
-            (item) => (
-              <li key={item}>
-                <a href={`#${item.toLowerCase()}`}>{item}</a>
-              </li>
-            ),
-          )}
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/team">Team</Link>
+          </li>
+          <li>
+            <a href="#curriculum">Curriculum</a>
+          </li>
+          <li>
+            <a href="#reviews">Reviews</a>
+          </li>
+          <li>
+            <a href="#mentorship">Mentorship</a>
+          </li>
+          <li>
+            <a href="#community">Community</a>
+          </li>
+          <li>
+            <a href="#careers">Careers</a>
+          </li>
+          <li>
+            <a href="#faqs">FAQs</a>
+          </li>
         </ul>
 
         {/* Right actions */}

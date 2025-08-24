@@ -10,7 +10,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-} 
+}
 
 /* Subtle wave effect at bottom */
 .hero-section::before {

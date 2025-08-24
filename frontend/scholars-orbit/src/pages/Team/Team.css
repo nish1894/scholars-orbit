@@ -1,0 +1,537 @@
+/* Team Container */
+.team-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Hero Section */
+.team-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+  padding: var(--space-16) 0 var(--space-12);
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+.team-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: var(--space-6);
+  line-height: 1.2;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.highlight {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.team-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+  position: relative;
+  z-index: 2;
+}
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  position: relative;
+  z-index: 2;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.toggle-btn.active {
+  background: white;
+  color: var(--color-primary);
+  border-color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-icon {
+  font-size: var(--text-lg);
+}
+
+/* Team Content */
+.team-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Shared Component Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Faculty and Management Grid Styles */
+.faculty-section,
+.management-section {
+  padding: var(--space-16) 0;
+  background: white;
+}
+
+.faculty-grid,
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.faculty-card,
+.management-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-card::before,
+.management-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
+}
+
+.faculty-card:hover,
+.management-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.faculty-avatar,
+.management-avatar {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.faculty-info,
+.management-info {
+  text-align: center;
+}
+
+.faculty-name,
+.management-name {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.faculty-position,
+.management-position {
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.faculty-institution,
+.management-institution {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+}
+
+.faculty-expertise,
+.faculty-experience,
+.management-experience {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.expertise-label,
+.experience-label {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.expertise-text,
+.experience-text {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: var(--text-sm);
+}
+
+.faculty-achievements,
+.management-achievements {
+  margin-top: var(--space-4);
+  text-align: left;
+}
+
+.faculty-achievements h4,
+.management-achievements h4 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.faculty-achievements ul,
+.management-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faculty-achievements li,
+.management-achievements li {
+  padding: var(--space-1) 0;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.faculty-achievements li::before,
+.management-achievements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: bold;
+}
+
+/* Why Choose Sections */
+.why-faculty-section,
+.why-management-section {
+  background: var(--color-surface);
+  padding: var(--space-16) 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-12);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+}
+
+.reason-card {
+  background: white;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.reason-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.reason-card h3 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.reason-card p {
+  color: var(--color-muted);
+  line-height: 1.6;
+  font-size: var(--text-base);
+}
+
+/* Call to Action Sections */
+.faculty-cta,
+.management-cta {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  padding: var(--space-16) 0;
+  color: white;
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.cta-content p {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn--primary {
+  background: linear-gradient(45deg, #dc2626, #ef4444);
+  color: white;
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 140px;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+}
+
+.btn--outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 140px;
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* Basic layout for management page */
+.management-container {
+  padding: 48px 0;
+}
+.management-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.management-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+.management-avatar {
+  font-size: 36px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #f3f4f6;
+}
+.management-info {
+  flex: 1;
+}
+.management-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.management-position,
+.management-institution {
+  margin: 4px 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Keep experience styles (still used) */
+.management-experience {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.experience-label {
+  font-weight: 600;
+  color: #374151;
+}
+.experience-text {
+  color: #4b5563;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .faculty-grid,
+  .management-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-hero {
+    padding: var(--space-12) 0 var(--space-8);
+  }
+
+  .faculty-section,
+  .management-section,
+  .why-faculty-section,
+  .why-management-section,
+  .faculty-cta,
+  .management-cta {
+    padding: var(--space-8) 0;
+  }
+
+  .faculty-grid,
+  .management-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .reasons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn--primary,
+  .btn--outline {
+    min-width: 200px;
+  }
+
+  .view-toggle {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .toggle-btn {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-title {
+    font-size: 2rem;
+  }
+
+  .team-subtitle {
+    font-size: 1rem;
+  }
+
+  .faculty-card,
+  .management-card {
+    padding: var(--space-4);
+  }
+
+  .faculty-expertise,
+  .faculty-experience,
+  .management-experience {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  .reason-card {
+    padding: var(--space-4);
+  }
+}

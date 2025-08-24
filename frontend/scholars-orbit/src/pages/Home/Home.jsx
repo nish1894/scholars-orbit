@@ -2,6 +2,8 @@ import React from 'react';
 import HeroSection from './components/HeroSection';
 import './Home.css';
 import SecondSection from './components/SecondSection';
+import Comparision from './components/Comparision';
+import Testimonial from './components/Testimonial';
 
 const Home = () => {
   return (
@@ -10,7 +12,13 @@ const Home = () => {
       <HeroSection />
 
       {/* Features Section */}
-      <SecondSection/>
+      <SecondSection />
+
+      {/* Comparison Section */}
+      <Comparision />
+
+      {/* Testimonials Section */}
+      <Testimonial />
     </div>
   );
 };

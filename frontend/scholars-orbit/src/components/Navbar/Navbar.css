@@ -94,14 +94,17 @@
 }
 
 /* Individual navigation link */
-.nav-links a {
+.nav-links a,
+.nav-links Link {
   text-decoration: none;
   color: var(--text);
   font-size: var(--text-base);
+  transition: color var(--transition-fast);
 }
 
 /* Navigation link hover state */
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links Link:hover {
   color: #111;
   text-decoration: underline;
   text-underline-offset: 4px;
