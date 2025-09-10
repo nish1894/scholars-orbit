@@ -28,7 +28,7 @@
 /* Right-side panel */
 .card {
   width: 33.333%;
-  min-width: 320px;
+  min-width: 480px;
   max-width: 480px;
   height: 100%;
   background: #fff;

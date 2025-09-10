@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./../Login/LoginCard.css"; // reuse same tokens/util classes
+import { apiPost } from "../../utils/api";
+import MobileLoginForm from "../Login/components/MobileLoginForm";
 
 export default function SignUpCard({ onClose = () => { }, onSwitchToLogin = () => { } }) {
   const [fullName, setFullName] = useState("");
@@ -7,17 +9,24 @@ export default function SignUpCard({ onClose = () => { }, onSwitchToLogin = () =
   const [cc, setCc] = useState("+91");
   const [phone, setPhone] = useState("");
   const [gradYear, setGradYear] = useState("");
+  const [human, setHuman] = useState(false); // Human verification state
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: replace with API call
-    alert(
-      JSON.stringify(
-        { fullName, email, phone: `${cc} ${phone}`, gradYear },
-        null,
-        2
-      )
-    );
+    try {
+      const payload = { name: fullName, email, password: `${cc}-${phone}-${gradYear}` };
+      const res = await apiPost('/auth/create-account', payload);
+      alert('Account created');
+      onSwitchToLogin();
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handlePhoneSubmit = ({ country, phone }) => {
+    if (!human) return alert('Please verify you are human.');
+    alert(`Login with ${country} ${phone}`);
   };
 
   return (
@@ -48,7 +57,7 @@ export default function SignUpCard({ onClose = () => { }, onSwitchToLogin = () =
 
         {/* Email */}
         <label className="label">
-          Email <span className="req">*</span>
+          Email <span className="req"></span>
         </label>
         <input
           className="text-input"
@@ -56,12 +65,11 @@ export default function SignUpCard({ onClose = () => { }, onSwitchToLogin = () =
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
           autoComplete="email"
         />
 
         {/* Phone */}
-        <label className="label">
+        {/* <label className="label">
           Phone Number <span className="req">*</span>
         </label>
         <p className="muted" style={{ marginTop: -6 }}>
@@ -96,20 +104,12 @@ export default function SignUpCard({ onClose = () => { }, onSwitchToLogin = () =
             required
             inputMode="numeric"
           />
-        </div>
+        </div> */}
 
-        {/* Graduation Year */}
-        <label className="label">
-          Graduation Year <span className="req">*</span>
-        </label>
-        <input
-          className="text-input"
-          type="text"
-          placeholder="Year of Graduation"
-          value={gradYear}
-          onChange={(e) => setGradYear(e.target.value)}
-          required
-        />
+          <MobileLoginForm onSubmit={handlePhoneSubmit} canSubmit={human} />
+
+
+
 
         {/* CTA */}
         <button className="btn btn--auth btn--auth-primary" type="submit" style={{ width: "100%", marginTop: 12 }}>
