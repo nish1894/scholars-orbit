@@ -5,7 +5,7 @@ require("dotenv").config();
 const config = require("./../config.json");
 
 
-const twilioClient = require("twilio")(config.twilioAccountSid, config.twilioAuthToken);
+// const twilioClient = require("twilio")(config.twilioAccountSid, config.twilioAuthToken);
 
 
 // POST /auth/create-account
