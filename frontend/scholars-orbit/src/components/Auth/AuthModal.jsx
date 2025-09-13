@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import LoginCard from '../../pages/Login/LoginCard';
-import SignUpCard from '../../pages/SignUp/SignUp';
+import SignupSideCard from '../../pages/Auth/SignupSideCard.jsx';
+import LoginSideCard from '../../pages/Auth/LoginSideCard';
+
 import './AuthModal.css';
 
 export default function AuthModal({ onClose, initialView = 'login' }) {
@@ -13,12 +14,12 @@ export default function AuthModal({ onClose, initialView = 'login' }) {
         <div className="auth-modal-overlay" onClick={onClose}>
             <div className="auth-modal-container" onClick={(e) => e.stopPropagation()}>
                 {currentView === 'login' ? (
-                    <LoginCard
+                    <LoginSideCard
                         onClose={onClose}
                         onSwitchToSignup={switchToSignup}
                     />
                 ) : (
-                    <SignUpCard
+                    <SignupSideCard
                         onClose={onClose}
                         onSwitchToLogin={switchToLogin}
                     />

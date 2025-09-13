@@ -28,7 +28,7 @@
 /* Right-side panel */
 .card {
   width: 33.333%;
-  min-width: 320px;
+  min-width: 480px;
   max-width: 480px;
   height: 100%;
   background: #fff;
@@ -39,6 +39,9 @@
 
   transform: translateX(100%);
   animation: slideIn var(--transition-normal) forwards;
+
+  /* set the default text color for everything inside the card */
+  color: var(--text, #0f172a);
 }
 
 .card.closing {
@@ -103,8 +106,29 @@
   color: var(--muted);
 }
 
+/* ensure primary text in the auth card is dark and readable */
+.card {
+  /* set the default text color for everything inside the card */
+  color: var(--text, #0f172a);
+}
+
+/* headings and labels should be prominent */
+.title,
+.label,
+.form .text-input,
+.form input,
+.form textarea {
+  color: var(--text, #0f172a);
+}
+
+/* keep secondary/muted text lighter but readable */
+.muted {
+  color: #6b7280; /* adjust to taste (#475569 is darker) */
+}
+
+/* links remain brand color */
 .link {
-  color: var(--link);
+  color: var(--text); /* use card primary text color */
   text-decoration: underline;
   text-underline-offset: 3px;
   background: none;
@@ -117,6 +141,19 @@
 .link-inline {
   align-self: center;
   font-weight: 600;
+}
+
+/* Force auth card links to use primary card text (higher specificity) */
+.card .link {
+  color: var(--text) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
 }
 
 /* Forms */
@@ -330,7 +367,6 @@
 
 /* Reduce motion preference */
 @media (prefers-reduced-motion: reduce) {
-
   .overlay,
   .card {
     animation: none !important;

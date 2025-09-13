@@ -3,6 +3,8 @@ import './LoginCard.css';
 import MobileLoginForm from './components/MobileLoginForm';
 import EmailLoginForm from './components/EmailLoginForm';
 import SocialLogins from './components/SocialLogins';
+import { apiPost } from '../../utils/api';
+import HumanCheck from './components/HumanCheck';
 
 /**
  * LoginCard Component - Handles user authentication with multiple login methods
@@ -40,9 +42,16 @@ export default function LoginCard({ onClose = () => { }, onSwitchToSignup = () =
    * Handle email based login submission
    * @param {Object} data - Contains email and password
    */
-  const handleEmailSubmit = ({ email, password }) => {
+  const handleEmailSubmit = async ({ email, password }) => {
     if (!human) return alert('Please verify you are human.');
-    alert(`Login with ${email} / ${'*'.repeat(password.length)}`);
+    try {
+      const res = await apiPost('/auth/login', { email, password });
+      alert('Login successful');
+      // TODO: store token if needed: localStorage.setItem('token', res.accessToken)
+      onClose();
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
